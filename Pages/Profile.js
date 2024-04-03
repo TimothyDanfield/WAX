@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
   accountPage: {
     flex: 1,
     backgroundColor: "#1f2029",
+    paddingTop: 100,
   },
   header: {
     flex: 0.5,
@@ -75,7 +76,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingLeft: 16,
     paddingRight: 16,
-    paddingTop: 50,
   },
   name: {
     color: "#ffcc00",

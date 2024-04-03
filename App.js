@@ -8,12 +8,19 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Profile from "./Pages/Profile";
 import Home from "./Pages/Home";
 import BasicInfo from "./Pages/BasicInfo";
+import Navbar from "./Components/Navbar";
+import Shop from "./Pages/Shop";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen 
+          name="Shop"
+          component={Shop}
+          options={false}
+        />
         <Stack.Screen
           name="Home"
           component={Home}
@@ -31,6 +38,7 @@ export default function App() {
           options={{ title: "BasicInfo" }}
         />
       </Stack.Navigator>
+      <Navbar/>
     </NavigationContainer>
   );
 }
