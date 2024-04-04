@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, Pressable } from "react-native";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 const Navbar = () => {
-    const [selected, setSelected] = useState("home")
+    const [selected, setSelected] = useState("Home")
 
     const navigation = useNavigation()
+    const route = useRoute()
+
+    useEffect(() => {
+        setSelected(route.name)
+    }, [route.name])
 
     
     return (
@@ -14,9 +19,9 @@ const Navbar = () => {
                 setSelected("shop")
                 navigation.navigate("Shop")
             }}
-            style={[styles.pressable1, {backgroundColor: selected === "shop" ? "#1f2029" : "white"}]}
+            style={[styles.pressable1, {backgroundColor: selected === "Shop" ? "#008080" : "white"}]}
             >
-                <Text style={{color: selected === "shop" ? "white" : "#1f2029"}}>
+                <Text>
                     Shop
                 </Text>
             </Pressable>
@@ -24,9 +29,9 @@ const Navbar = () => {
                 setSelected("home")
                 navigation.navigate("Home")
             }}
-            style={[styles.pressable2, {backgroundColor: selected === "home" ? "#1f2029" : "white"}]}
+            style={[styles.pressable2, {backgroundColor: selected === "Home" ? "#008080" : "white"}]}
             >
-                <Text style={{color: selected === "home" ? "white" : "#1f2029"}}>
+                <Text>
                     Home
                 </Text>
             </Pressable>
@@ -34,9 +39,9 @@ const Navbar = () => {
                 setSelected("profile")
                 navigation.navigate("Profile")
             }}
-            style={[styles.pressable3, {backgroundColor: selected === "profile" ? "#1f2029" : "white"}]}
+            style={[styles.pressable3, {backgroundColor: selected === "Profile" ? "#008080" : "white"}]}
             >
-                <Text style={{color: selected === "profile" ? "white" : "#1f2029"}}>
+                <Text>
                     Profile
                 </Text>
             </Pressable>
@@ -48,9 +53,9 @@ const styles = StyleSheet.create({
     navbar: {
         position: "absolute",
         bottom: 50,
-        left: "25%",
+        left: "30%",
         backgroundColor: 'white',
-        height: 75,
+        height: 50,
         width: '50%',
         display: 'flex',
         flexDirection: 'row',

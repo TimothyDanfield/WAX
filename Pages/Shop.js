@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Pressable, Button, Image } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Navbar from "../Components/Navbar";
 import axios from 'axios'
 const Shop = ({ navigation }) => {
 
@@ -9,6 +10,7 @@ const Shop = ({ navigation }) => {
     return (
         <View style={styles.shop}>
             <Text>Shop</Text>
+            <Navbar />
         </View>
     );
 };

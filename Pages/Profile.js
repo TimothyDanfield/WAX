@@ -2,12 +2,10 @@ import React from "react";
 import { useRef, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { StyleSheet, Text, View, Pressable } from "react-native";
+import Navbar from "../Components/Navbar";
 import BasicInfo from "./BasicInfo";
 
 const Profile = ({ navigation }) => {
-  const pressButton = () => {
-    AsyncStorage.setItem("Test", JSON.stringify("this is a test"));
-  };
 
   const signOut = async () => {
     try {
@@ -36,7 +34,7 @@ const Profile = ({ navigation }) => {
         <Pressable onPress={() => navigation.navigate("BasicInfo")}>
           <Text style={styles.settingsText}>Basic Info</Text>
         </Pressable>
-        <Pressable onPress={pressButton}>
+        <Pressable>
           <Text style={styles.settingsText}>Order History</Text>
         </Pressable>
         <Pressable>
@@ -53,6 +51,7 @@ const Profile = ({ navigation }) => {
         </Pressable>
       </View>
       <View style={styles.emptyView}></View>
+      <Navbar />
     </View>
   );
 };

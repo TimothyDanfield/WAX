@@ -10,21 +10,27 @@ import Home from "./Pages/Home";
 import BasicInfo from "./Pages/BasicInfo";
 import Navbar from "./Components/Navbar";
 import Shop from "./Pages/Shop";
+import Signin from "./Pages/Signin";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen 
-          name="Shop"
-          component={Shop}
-          options={false}
-        />
+      {/* <Stack.Screen
+          name="Sigin"
+          component={Signin}
+          options={{ title: "Signin" }}
+        /> */}
         <Stack.Screen
           name="Home"
           component={Home}
           options={{ title: "Home" }}
+        />
+        <Stack.Screen
+          name="Shop"
+          component={Shop}
+          options={false}
         />
         <Stack.Screen
           name="Profile"
@@ -38,7 +44,6 @@ export default function App() {
           options={{ title: "BasicInfo" }}
         />
       </Stack.Navigator>
-      <Navbar/>
     </NavigationContainer>
   );
 }

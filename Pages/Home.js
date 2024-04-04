@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Pressable, Button, Image } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Navbar from "../Components/Navbar";
 import axios from 'axios'
 const Home = ({ navigation }) => {
     const [users, setUsers] = useState()
@@ -58,6 +59,7 @@ const Home = ({ navigation }) => {
                     There are currently no upcoming sessions...
                 </Text>
             </View>
+            <Navbar />
         </View>
     );
 };
