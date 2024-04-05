@@ -11,38 +11,53 @@ import BasicInfo from "./Pages/BasicInfo";
 import Navbar from "./Components/Navbar";
 import Shop from "./Pages/Shop";
 import Signin from "./Pages/Signin";
+import Signup from './Pages/Signup'
 
 export default function App() {
+  const [userToken, setUserToken] = useState(null)
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {/* <Stack.Screen
-          name="Sigin"
-          component={Signin}
-          options={{ title: "Signin" }}
-        /> */}
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ title: "Home" }}
-        />
-        <Stack.Screen
-          name="Shop"
-          component={Shop}
-          options={false}
-        />
-        <Stack.Screen
-          name="Profile"
-          component={Profile}
-          options={{ title: "Profile" }}
-        />
+        {/* <>
+          {userToken == null ?
+            (
+              <Stack.Screen name="Signin" options={{ title: "Signin" }}>
+                {(props) => <Signin {...props} setUserToken={setUserToken} />}
+              </Stack.Screen>
+              <Stack.Screen 
+                name="Sigup" 
+                compoenet={Signup}
+                options={{ title: "Signup" }}
+              />
 
-        <Stack.Screen
-          name="BasicInfo"
-          component={BasicInfo}
-          options={{ title: "BasicInfo" }}
-        />
+            )
+            :
+            (
+              <> */}
+                <Stack.Screen
+                  name="Home"
+                  component={Home}
+                  options={{ title: "Home" }}
+                />
+                <Stack.Screen
+                  name="Shop"
+                  component={Shop}
+                  options={false}
+                />
+                <Stack.Screen name="Profile" options={{ title: "Profile" }}>
+                  {(props) => <Profile {...props} setUserToken={setUserToken}/>}
+                </Stack.Screen>
+
+                <Stack.Screen
+                  name="BasicInfo"
+                  component={BasicInfo}
+                  options={{ title: "BasicInfo" }}
+                />
+              {/* </>
+            )}
+        </> */}
+
       </Stack.Navigator>
     </NavigationContainer>
   );

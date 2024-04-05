@@ -5,11 +5,12 @@ import { StyleSheet, Text, View, Pressable } from "react-native";
 import Navbar from "../Components/Navbar";
 import BasicInfo from "./BasicInfo";
 
-const Profile = ({ navigation }) => {
+const Profile = ({ navigation, setUserToken }) => {
 
   const signOut = async () => {
     try {
       await AsyncStorage.clear();
+      setUserToken(null)
     } catch (error) {
       console.log(error);
     }
