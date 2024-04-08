@@ -3,43 +3,33 @@ import { StyleSheet, Text, View, Pressable } from "react-native";
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 const Navbar = () => {
-    const [selected, setSelected] = useState("Home")
-
-    const navigation = useNavigation()
     const route = useRoute()
+    const navigation = useNavigation()
 
-    useEffect(() => {
-        setSelected(route.name)
-    }, [route.name])
-
-    
     return (
         <View style={styles.navbar}>
             <Pressable onPress={() => {
-                setSelected("shop")
                 navigation.navigate("Shop")
             }}
-            style={[styles.pressable1, {backgroundColor: selected === "Shop" ? "#008080" : "white"}]}
+            style={[styles.pressable1, {backgroundColor: route.name === "Shop" ? "#008080" : "white"}]}
             >
                 <Text>
                     Shop
                 </Text>
             </Pressable>
             <Pressable onPress={() => {
-                setSelected("home")
                 navigation.navigate("Home")
             }}
-            style={[styles.pressable2, {backgroundColor: selected === "Home" ? "#008080" : "white"}]}
+            style={[styles.pressable2, {backgroundColor: route.name === "Home" ? "#008080" : "white"}]}
             >
                 <Text>
                     Home
                 </Text>
             </Pressable>
             <Pressable onPress={() => {
-                setSelected("profile")
                 navigation.navigate("Profile")
             }}
-            style={[styles.pressable3, {backgroundColor: selected === "Profile" ? "#008080" : "white"}]}
+            style={[styles.pressable3, {backgroundColor: route.name === "Profile" ? "#008080" : "white"}]}
             >
                 <Text>
                     Profile

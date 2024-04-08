@@ -12,6 +12,7 @@ import Navbar from "./Components/Navbar";
 import Shop from "./Pages/Shop";
 import Signin from "./Pages/Signin";
 import Signup from './Pages/Signup'
+import OrderHistory from "./Pages/OrderHistory";
 
 export default function App() {
   const [userToken, setUserToken] = useState(null)
@@ -19,22 +20,23 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {/* <>
+        <>
           {userToken == null ?
             (
-              <Stack.Screen name="Signin" options={{ title: "Signin" }}>
-                {(props) => <Signin {...props} setUserToken={setUserToken} />}
-              </Stack.Screen>
-              <Stack.Screen 
-                name="Sigup" 
-                compoenet={Signup}
-                options={{ title: "Signup" }}
-              />
-
+              <>
+                <Stack.Screen name="Signin" options={{ title: "Signin" }}>
+                  {(props) => <Signin {...props} setUserToken={setUserToken} />}
+                </Stack.Screen>
+                <Stack.Screen
+                  name="Signup"
+                  component={Signup}
+                  options={{ title: "Signup" }}
+                />
+              </>
             )
             :
             (
-              <> */}
+              <>
                 <Stack.Screen
                   name="Home"
                   component={Home}
@@ -46,7 +48,7 @@ export default function App() {
                   options={false}
                 />
                 <Stack.Screen name="Profile" options={{ title: "Profile" }}>
-                  {(props) => <Profile {...props} setUserToken={setUserToken}/>}
+                  {(props) => <Profile {...props} setUserToken={setUserToken} />}
                 </Stack.Screen>
 
                 <Stack.Screen
@@ -54,9 +56,14 @@ export default function App() {
                   component={BasicInfo}
                   options={{ title: "BasicInfo" }}
                 />
-              {/* </>
+                <Stack.Screen
+                  name="OrderHistory"
+                  component={OrderHistory}
+                  options={{ title: "OrderHistory" }}
+                />
+              </>
             )}
-        </> */}
+        </>
 
       </Stack.Navigator>
     </NavigationContainer>

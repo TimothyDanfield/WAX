@@ -1,8 +1,8 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const verifyToken = () => {
-  const token = AsyncStorage.getItem("Token");
+const verifyToken = async () => {
+  const token = await AsyncStorage.getItem("Token");
   return token ? token : "";
 };
 

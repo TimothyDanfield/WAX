@@ -35,7 +35,7 @@ const Profile = ({ navigation, setUserToken }) => {
         <Pressable onPress={() => navigation.navigate("BasicInfo")}>
           <Text style={styles.settingsText}>Basic Info</Text>
         </Pressable>
-        <Pressable>
+        <Pressable onPress={() => navigation.navigate("OrderHistory")}>
           <Text style={styles.settingsText}>Order History</Text>
         </Pressable>
         <Pressable>

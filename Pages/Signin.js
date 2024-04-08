@@ -14,14 +14,6 @@ const Signin = ({ navigation, setUserToken }) => {
         password: "",
     });
 
-    const [signup, setSignup] = useState({
-        name: "",
-        securityQuestion: "",
-        securityAnswer: "",
-        email: "",
-        password: "",
-    });
-
 
     const handleRecoveryEmail = (e) => {
         setRecoveryEmail(e.target.value);
@@ -32,13 +24,6 @@ const Signin = ({ navigation, setUserToken }) => {
         setLogin({
             ...login,
             [name]: e,
-        });
-    };
-
-    const handleSignup = (e) => {
-        setSignup({
-            ...signup,
-            [e.target.name]: e.target.value,
         });
     };
 
@@ -79,41 +64,6 @@ const Signin = ({ navigation, setUserToken }) => {
             toast.error(error.response.data.Error)
         }
 
-    };
-
-    // Signup Functionality:
-
-    const signUp = async (e) => {
-        e.preventDefault();
-        if (
-            !signup.password ||
-            !signup.name ||
-            !signup.email ||
-            !signup.securityQuestion ||
-            !signup.securityAnswer
-        ) {
-            toast.error("Please fill out required information");
-        } else {
-            try {
-                const newUser = await axios.post(
-                    `http://localhost:3001/user/register`,
-                    {
-                        name: signup.name,
-                        email: signup.email,
-                        password: signup.password,
-                        securityQuestion: signup.securityQuestion,
-                        securityAnswer: signup.securityAnswer,
-                    }
-                );
-                console.log(newUser);
-                // localStorage.setItem('User', JSON.stringify(newUser.data.user))
-                // localStorage.setItem('Token', JSON.stringify(newUser.data.token))
-                navigate("/shop");
-            } catch (error) {
-                console.log(error);
-                toast.error(error.response.data.error || error.response.data.message)
-            }
-        }
     };
 
     return (
