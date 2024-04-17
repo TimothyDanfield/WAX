@@ -11,7 +11,7 @@ const Navbar = () => {
             <Pressable onPress={() => {
                 navigation.navigate("Shop")
             }}
-            style={[styles.pressable1, {backgroundColor: route.name === "Shop" ? "#008080" : "white"}]}
+                style={[styles.pressable1, { backgroundColor: route.name === "Shop" ? "#008080" : "white" }]}
             >
                 <Text>
                     Shop
@@ -20,7 +20,7 @@ const Navbar = () => {
             <Pressable onPress={() => {
                 navigation.navigate("Home")
             }}
-            style={[styles.pressable2, {backgroundColor: route.name === "Home" ? "#008080" : "white"}]}
+                style={[styles.pressable2, { backgroundColor: route.name === "Home" ? "#008080" : "white" }]}
             >
                 <Text>
                     Home
@@ -29,10 +29,19 @@ const Navbar = () => {
             <Pressable onPress={() => {
                 navigation.navigate("Profile")
             }}
-            style={[styles.pressable3, {backgroundColor: route.name === "Profile" ? "#008080" : "white"}]}
+                style={[styles.pressable3, { backgroundColor: route.name === "Profile" ? "#008080" : "white" }]}
             >
                 <Text>
                     Profile
+                </Text>
+            </Pressable>
+            <Pressable onPress={() => {
+                navigation.navigate("Live")
+            }}
+                style={[styles.pressable3, { backgroundColor: route.name === "Live" ? "#008080" : "white" }]}
+            >
+                <Text>
+                    Live
                 </Text>
             </Pressable>
         </View>

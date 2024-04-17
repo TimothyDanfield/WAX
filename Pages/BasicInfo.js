@@ -21,7 +21,6 @@ const BasicInfo = ({ navigation }) => {
     AsyncStorage.getItem("User").then((user) => {
       setUser(JSON.parse(user))
     })
-    
   }
 
   useEffect(() => {

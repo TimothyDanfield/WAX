@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Pressable, Button, Image } from "react-native";
+import { StyleSheet, Text, View, Pressable, Button, Image, FlatList } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Navbar from "../Components/Navbar";
 import axios from 'axios'
@@ -36,17 +36,23 @@ const Home = ({ navigation }) => {
                 </View>
             </Pressable>
             <View style={styles.liveSection}>
-                {users?.length > 0 ?
-                    <View>
-                    {users && users.map((user) =>  {
-                        <Pressable onPress={() => handleLivePress(user)}>
-                            <Image source={user.path}/>
-                        </Pressable>
-                    })}
-                    </View>
-                    :
-                    <Text style={styles.text}>There are currently no live sessions...</Text>
-                }
+            {users && users?.length > 0 ?
+                <FlatList
+                    data={users}
+                    renderItem={(user) => {
+                        return (
+                            <View style={styles.sellerList}>
+                                <Image style={styles.imageContainer} resizeMode={"cover"} source={{ uri: user.item.photo.path }} />
+                            </View>
+                        )
+
+                    }}
+                />
+                :
+                <View style={styles.loader}>
+                    <Text style={styles.text}>There are currently no live sellers...</Text>
+                </View>
+            }
             </View>
             <Pressable onPress={() => console.log("Upcoming pressed")}>
                 <View style={styles.upcomingHeader}>
@@ -65,6 +71,12 @@ const Home = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+    images: {
+        flex: 1,
+        backgroundColor: 'red',
+        height: 50
+    },
+
     home: {
         backgroundColor: "#1f2029",
         flex: 1,
@@ -80,7 +92,8 @@ const styles = StyleSheet.create({
     },
     liveSection: {
         flex: 1,
-        alignItems: "center",
+        paddingTop: 50,
+        alignItems: 'center',
         justifyContent: "center",
     },
     upcomingHeader: {
@@ -100,6 +113,18 @@ const styles = StyleSheet.create({
         borderColor: "#008080",
         borderWidth: 1,
     },
+
+    imageContainer: {
+        height: 150,
+        width: 150,
+
+    },
+
+    sellerList: {
+        flex: 1,
+        width: "100%",
+        alignItems: 'center'
+    }
 });
 
 export default Home;

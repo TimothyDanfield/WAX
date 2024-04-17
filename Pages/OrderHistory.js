@@ -5,6 +5,7 @@ import Navbar from "../Components/Navbar";
 import axios from '../utils/axiosConfig'
 import { Table } from 'antd'
 import { formatDate } from '../utils/formatDate'
+import { AntDesign } from '@expo/vector-icons'
 const OrderHistory = ({ navigation }) => {
     const [orderHistory, setOrderHistory] = useState([])
     const [user, setUser] = useState(AsyncStorage.getItem("User"))
@@ -24,17 +25,6 @@ const OrderHistory = ({ navigation }) => {
     useEffect(() => {
         getUser()
     }, [])
-
-    // const fetchHistory = async () => {
-    //     console.log(user._id)
-    //     const history = await axios.get(`http://192.168.0.88:3001/order/${user._id}`)
-    //     console.log(history)
-    //     setOrderHistory(history.data)
-    // }
-
-    // useEffect(() => {
-    //     fetchHistory()
-    // }, [])
 
     const columns = [
         {
@@ -68,13 +58,18 @@ const OrderHistory = ({ navigation }) => {
 
     return (
         <View style={styles.orderHistory}>
-            <View>
-                <Text style={styles.orderHistoryHeader}>Order History</Text>
+            <View style={styles.headerMain}>
+                <View style={styles.headerView}>
+                    <Pressable onPress={() => navigation.navigate("Profile")}>
+                        <AntDesign name="arrowleft" size={24} color="#008080" />
+                    </Pressable>
+                    <Text style={styles.orderHistoryHeader}>Order History</Text>
+                </View>
+
             </View>
             {orderHistory?.length === 0 ?
                 <View style={styles.noOrders}>
-                    <Text>No orders to display</Text>
-                    <Text>You don't seem to have any orders</Text>
+                    <Text style={styles.noOrdersText}>No orders to display</Text>
                 </View>
                 :
                 <View>
@@ -106,6 +101,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
+    headerMain: {
+        justifyContent: "flex-start",
+        width: '100%',
+        padding: 25,
+      },
+    
+      headerView: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignContent: "space-around",
+        width: "68%"
+      },
+
     itemData: {
         width: "75%",
         margin: 15,
@@ -127,12 +135,18 @@ const styles = StyleSheet.create({
     orderHistoryHeader: {
         color: "#008080",
         fontWeight: "900",
-        fontSize: 20, 
-        marginBottom: 50,
+        fontSize: 20,
     },
 
     noOrders: {
+        flex: 0.75,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
 
+    noOrdersText: {
+        color: '#008080',
+        fontSize: 18,
     }
 
 });

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Pressable, Button, Image, FlatList } from "react-native";
+import { StyleSheet, Text, View, Pressable, Button, Image, FlatList, ActivityIndicator } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Navbar from "../Components/Navbar";
 import axios from 'axios'
@@ -25,14 +25,16 @@ const Shop = ({ navigation }) => {
                     renderItem={(seller) => {
                         return (
                             <View style={styles.sellerList}>
-                                <Image style={styles.imageContainer} resizeMode={"cover"} source={{uri: seller.item.photo.path}} />
+                                <Image style={styles.imageContainer} resizeMode={"cover"} source={{ uri: seller.item.photo.path }} />
                             </View>
                         )
 
                     }}
                 />
                 :
-                <Text style={styles.text}>There are currently no live sessions...</Text>
+                <View style={styles.loader}>
+                    <ActivityIndicator size="large" />
+                </View>
             }
             <Navbar />
         </View>
@@ -40,6 +42,13 @@ const Shop = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+    loader: {
+        flex: 1,
+        justifyContent: 'center',
+        flexDirection: "row",
+        marginBottom: '25%'
+    },
+
     shop: {
         flex: 1,
         paddingTop: 100,
